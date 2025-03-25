@@ -11,7 +11,7 @@ const config = {
   clientId: process.env.SCALEKIT_CLIENT_ID,
   clientSecret: process.env.SCALEKIT_CLIENT_SECRET,
   tokenUrl: `${process.env.SCALEKIT_ENVIRONMENT_URL}/oauth/token`,
-  scope: 'openid email profile',
+  scope: 'offline_access client_credentials',
 };
 
 main();
@@ -20,12 +20,11 @@ main();
  * Get an access token using the client credentials flow
  * @returns {Promise<string>} The access token
  */
-async function getClientCredentialsToken(): Promise<string> {
+async function getClientCredentialsToken() {
   try {
     // Prepare the request body
     const params = new URLSearchParams();
     params.append('grant_type', 'client_credentials');
-    // params.append('grant_type', 'refresh_token');
     params.append('client_id', config.clientId);
     params.append('client_secret', config.clientSecret);
 
@@ -43,14 +42,9 @@ async function getClientCredentialsToken(): Promise<string> {
     // Extract and return the access token
     const { access_token, expires_in } = response.data;
 
-    console.log('************************************************');
-    console.log('Full response:', response.data);
     console.log(
-      'Token acquired successfully. Expires in',
-      expires_in,
-      'seconds.'
+      `Token acquired successfully. Expires in ${expires_in} seconds.`
     );
-    console.log('************************************************');
 
     return access_token;
   } catch (error) {
@@ -64,7 +58,7 @@ async function getClientCredentialsToken(): Promise<string> {
  * @param {string} url - The API endpoint to call
  * @returns {Promise<any>} The API response
  */
-async function makeAuthenticatedRequest(url: string): Promise<any> {
+async function makeAuthenticatedRequest(url) {
   try {
     // Get the access token
     const token = await getClientCredentialsToken();
