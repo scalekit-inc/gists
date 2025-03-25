@@ -11,7 +11,7 @@ const config = {
   clientId: process.env.SCALEKIT_CLIENT_ID,
   clientSecret: process.env.SCALEKIT_CLIENT_SECRET,
   tokenUrl: `${process.env.SCALEKIT_ENVIRONMENT_URL}/oauth/token`,
-  scope: 'offline_access', // Optional: specify required scopes
+  scope: 'offline_access client_credentials',
 };
 
 main();
