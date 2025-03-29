@@ -48,6 +48,7 @@ async function exchangeCodeForToken({
         },
       }
     );
+
     return response.data;
   } catch (error) {
     console.error('Error exchanging code for token:', error);
