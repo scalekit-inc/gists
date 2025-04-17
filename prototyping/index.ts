@@ -8,10 +8,9 @@ import axios from 'axios';
 
 // Configuration
 const config = {
-  clientId: process.env.SCALEKIT_CLIENT_ID,
-  clientSecret: process.env.SCALEKIT_CLIENT_SECRET,
+  clientId: process.env.SCALEKIT_M2M_CLIENT_ID,
+  clientSecret: process.env.SCALEKIT_M2M_CLIENT_SECRET,
   tokenUrl: `${process.env.SCALEKIT_ENVIRONMENT_URL}/oauth/token`,
-  scope: 'openid email profile',
 };
 
 main();
@@ -86,10 +85,15 @@ async function makeAuthenticatedRequest(url: string): Promise<any> {
 // Example usage
 async function main() {
   try {
+    // Get the token first to log it
+    const token = await getClientCredentialsToken();
+    console.log('Bearer Token:', token);
+
+    // Make request to local server
     const data = await makeAuthenticatedRequest(
-      `${process.env.SCALEKIT_ENVIRONMENT_URL}/api/v1/organizations`
+      'http://localhost:4000/api/test'
     );
-    console.log('API Response:', data);
+    console.log('Local Server Response:', data);
   } catch (error) {
     console.error('Main function error:', error);
   }
