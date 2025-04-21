@@ -110,6 +110,8 @@ async function validateToken(
   try {
     // Decode token to get header information
     const decoded = jwt.decode(token, { complete: true });
+
+    console.log('Decoded token:', decoded);
     if (!decoded) {
       console.log('Invalid token format');
       throw new Error('Invalid token format');

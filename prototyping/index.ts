@@ -51,6 +51,9 @@ async function getClientCredentialsToken(): Promise<string> {
     );
     console.log('************************************************');
 
+    console.log('Access token:\n', access_token);
+    console.log('************************************************');
+
     return access_token;
   } catch (error) {
     console.error('Error getting client credentials token:', error);
