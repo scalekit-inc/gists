@@ -3,7 +3,7 @@
 Scalekit Agent Actions Quickstart Example
 
 This script demonstrates how to use Scalekit Agent Actions to enable AI agents
-to take actions in third-party applications (Gmail, Calendar, Slack, Notion) 
+to take actions in third-party applications (Gmail, Calendar, Slack, Notion)
 on behalf of users using OAuth 2.0 authentication.
 
 Prerequisites:
@@ -24,11 +24,12 @@ def main():
     """
     Agent Actions quickstart - fetches last 5 unread emails from Gmail
     """
-    
+
     # Check environment variables
-    required_vars = ["SCALEKIT_CLIENT_ID", "SCALEKIT_CLIENT_SECRET", "SCALEKIT_ENV_URL"]
+    required_vars = ["SCALEKIT_CLIENT_ID",
+                     "SCALEKIT_CLIENT_SECRET", "SCALEKIT_ENV_URL"]
     missing_vars = [var for var in required_vars if not os.getenv(var)]
-    
+
     if missing_vars:
         print(f"❌ Missing environment variables: {', '.join(missing_vars)}")
         print("Please set these variables before running the script.")
@@ -36,6 +37,8 @@ def main():
 
     # Initialize Scalekit client - exact match to documentation
     try:
+        print(
+            f"Initializing Scalekit client with client_id: {os.getenv('SCALEKIT_CLIENT_ID')}, client_secret: {os.getenv('SCALEKIT_CLIENT_SECRET')}, env_url: {os.getenv('SCALEKIT_ENV_URL')}")
         scalekit_sdk = scalekit.client.ScalekitClient(
             client_id=os.getenv("SCALEKIT_CLIENT_ID"),
             client_secret=os.getenv("SCALEKIT_CLIENT_SECRET"),
@@ -60,19 +63,19 @@ def main():
         # Step 2: Check authorization status and get authorization link if needed
         print(f"\n🔐 Step 2: Checking authorization status...")
         print(f"Account status: {connected_account.status}")
-        
+
         if connected_account.status != "ACTIVE":
             print("⚠️  Gmail connection not active. User needs to authorize.")
-            
+
             link_response = connect.get_authorization_link(
                 connection_name="gmail",
                 identifier="user_123"
             )
-            
+
             print(f"🔗 Authorization URL: {link_response.link}")
             print("👆 Click the link above to authorize Gmail access")
             input("⌨️  Press Enter after completing authorization...")
-            
+
             # Re-check the connected account status after authorization
             connected_account = connect.get_or_create_connected_account(
                 connection_name="gmail",
@@ -83,7 +86,7 @@ def main():
         # Step 3: Execute Gmail tool to fetch emails
         if connected_account.status == "ACTIVE":
             print(f"\n📧 Step 3: Fetching unread emails...")
-            
+
             emails = connect.tools.execute(
                 connected_account_id=connected_account.id,
                 tool='gmail_fetch_mails',
@@ -92,10 +95,10 @@ def main():
                     'max_results': 5
                 }
             )
-            
+
             print(f"✅ Successfully fetched emails!")
             print(f"📊 Result: {emails.result}")
-            
+
             # Display email summary if available
             if hasattr(emails, 'result') and emails.result:
                 messages = emails.result.get('messages', [])
@@ -111,8 +114,6 @@ def main():
 
     print("\n🎉 Agent Actions quickstart completed successfully!")
     print("💡 Next steps: Try the Agentic Tool Calling guide with LLM integration")
-
-
 
 
 if __name__ == "__main__":
