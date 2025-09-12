@@ -51,37 +51,37 @@ def main():
         return
 
     try:
-        # Step 1: Create or get connected account for Gmail
-        print("\n🔗 Step 1: Creating connected account for Gmail...")
-        # Try the exact documentation example (no authorization_details)
-        connected_account = connect.get_or_create_connected_account(
-            connection_name="gmail",
-            identifier="user_123"
-        )
-        print(f"✅ Connected account ID: {connected_account.id}")
+        # # Step 1: Create or get connected account for Gmail
+        # print("\n🔗 Step 1: Creating connected account for Gmail...")
+        # # Try the exact documentation example (no authorization_details)
+        # connected_account = connect.get_or_create_connected_account(
+        #     connection_name="gmail",
+        #     identifier="user_123"
+        # )
+        # print(f"✅ Connected account ID: {connected_account.id}")
 
-        # Step 2: Check authorization status and get authorization link if needed
-        print(f"\n🔐 Step 2: Checking authorization status...")
-        print(f"Account status: {connected_account.status}")
+        # # Step 2: Check authorization status and get authorization link if needed
+        # print(f"\n🔐 Step 2: Checking authorization status...")
+        # print(f"Account status: {connected_account.status}")
 
-        if connected_account.status != "ACTIVE":
-            print("⚠️  Gmail connection not active. User needs to authorize.")
+        # if connected_account.status != "ACTIVE":
+        #     print("⚠️  Gmail connection not active. User needs to authorize.")
 
-            link_response = connect.get_authorization_link(
-                connection_name="gmail",
-                identifier="user_123"
-            )
+        #     link_response = connect.get_authorization_link(
+        #         connection_name="gmail",
+        #         identifier="user_123"
+        #     )
 
-            print(f"🔗 Authorization URL: {link_response.link}")
-            print("👆 Click the link above to authorize Gmail access")
-            input("⌨️  Press Enter after completing authorization...")
+        #     print(f"🔗 Authorization URL: {link_response.link}")
+        #     print("👆 Click the link above to authorize Gmail access")
+        #     input("⌨️  Press Enter after completing authorization...")
 
-            # Re-check the connected account status after authorization
-            connected_account = connect.get_or_create_connected_account(
-                connection_name="gmail",
-                identifier="user_123"
-            )
-            print(f"Updated account status: {connected_account.status}")
+        #     # Re-check the connected account status after authorization
+        #     connected_account = connect.get_or_create_connected_account(
+        #         connection_name="gmail",
+        #         identifier="user_123"
+        #     )
+        #     print(f"Updated account status: {connected_account.status}")
 
         # Step 3: Execute Gmail tool to fetch emails
         if connected_account.status == "ACTIVE":
