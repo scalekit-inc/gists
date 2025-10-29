@@ -14,7 +14,6 @@ curl -X POST "${SCALEKIT_ENVIRONMENT_URL}/oauth/token" \
   -d "grant_type=client_credentials" \
   -d "client_id=${SCALEKIT_CLIENT_ID}" \
   -d "client_secret=${SCALEKIT_CLIENT_SECRET}" \
-  -d "scope=openid email profile"
 ```
 
 ### 2. Extract Token and Make Authenticated Request
@@ -25,8 +24,7 @@ TOKEN_RESPONSE=$(curl -s -X POST "${SCALEKIT_ENVIRONMENT_URL}/oauth/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=client_credentials" \
   -d "client_id=${SCALEKIT_CLIENT_ID}" \
-  -d "client_secret=${SCALEKIT_CLIENT_SECRET}" \
-  -d "scope=openid email profile")
+  -d "client_secret=${SCALEKIT_CLIENT_SECRET}" 
 
 # Extract access token using jq (install jq if not available)
 ACCESS_TOKEN=$(echo $TOKEN_RESPONSE | jq -r '.access_token')
@@ -51,8 +49,7 @@ ACCESS_TOKEN=$(curl -s -X POST "${SCALEKIT_ENVIRONMENT_URL}/oauth/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=client_credentials" \
   -d "client_id=${SCALEKIT_CLIENT_ID}" \
-  -d "client_secret=${SCALEKIT_CLIENT_SECRET}" \
-  -d "scope=openid email profile" | jq -r '.access_token')
+  -d "client_secret=${SCALEKIT_CLIENT_SECRET}" \  | jq -r '.access_token')
 
 # Use the token for API requests
 curl -X GET "${SCALEKIT_ENVIRONMENT_URL}/api/v1/organizations" \
@@ -71,7 +68,6 @@ ACCESS_TOKEN=$(curl -s -X POST "${SCALEKIT_ENVIRONMENT_URL}/oauth/token" \
   -d "grant_type=client_credentials" \
   -d "client_id=${SCALEKIT_CLIENT_ID}" \
   -d "client_secret=${SCALEKIT_CLIENT_SECRET}" \
-  -d "scope=openid email profile" | \
   grep -o '"access_token":"[^"]*' | \
   sed 's/"access_token":"//')
 ```
