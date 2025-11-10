@@ -1,33 +1,54 @@
-# Scalekit Code Examples
+<p align="center">
+  <a href="https://scalekit.com" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <img src="https://cdn.scalekit.cloud/v1/scalekit-logo-dark.svg" height="64">
+    </picture>
+  </a>
+</p>
 
-This repository contains a collection of essential code snippets for building applications with the Scalekit API. These snippets are designed to help developers quickly implement common authentication flows and API interactions using Scalekit.
+<h1 align="center">
+  Scalekit Code Snippets & Gists
+</h1>
 
-## 🗂️ Navigation
+<p align="center">
+  <strong>Auth stack for AI apps ⚡ Ready-to-use code snippets</strong>
+</p>
 
-### [Authentication Examples](./auth/)
-Core authentication patterns and flows:
-- **[Authorization Code Flow](./auth/authorization-code/)** - Standard OAuth2 authorization code flow implementations
-- **[Client Credentials](./auth/client-credentials/)** - Machine-to-machine authentication
-- **[Token Exchange](./auth/token-exchange/)** - Token exchange patterns
+<p align="center">
+  <a href="https://github.com/scalekit-inc/gists/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://docs.scalekit.com"><img src="https://img.shields.io/badge/docs-scalekit.com-blue" alt="Documentation"></a>
+</p>
 
-### [Full-Stack Auth (FSA)](./full-stack-auth/)
-Complete authentication solutions:
-- **[Basic FSA](./full-stack-auth/basic/)** - Core full-stack authentication examples
-- **[SSO Integration](./full-stack-auth/sso/)** - Single Sign-On implementations
-- **[Passwordless Auth](./full-stack-auth/passwordless/)** - Passwordless authentication flows
-- **[SCIM Provisioning](./full-stack-auth/scim/)** - User provisioning examples
+<p align="center">
+  Essential code snippets and utilities for rapid Scalekit integration across languages and frameworks
+</p>
 
-### [Agent Actions](./agent-actions/)
-Machine-to-machine and automated workflows:
-- API authentication for automated systems
-- Service-to-service communication patterns
+## 🚀 What You'll Find Here
 
-### [MCP (Model Context Protocol)](./mcp/)
-Examples for MCP integrations and implementations
+- **Quick Start Snippets**: Copy-paste code for common authentication patterns
+- **Multi-Language Support**: Examples in Node.js, Python, Go, Java, and more
+- **API Integration Helpers**: Utility functions for Scalekit API interactions  
+- **Framework Examples**: Platform-specific integration patterns
+- **Security Best Practices**: Production-ready security implementations
 
-## 🚀 Quick Start
+## Key Categories
 
-1. Browse the categories above to find relevant examples
-2. Each directory contains focused code snippets for specific use cases
-3. Copy and adapt the examples for your application
-4. Refer to individual README files in each directory for detailed usage instructions
+- **Authentication Flows**: OAuth 2.0, SAML, and OIDC implementation patterns
+- **User Management**: CRUD operations for organizations and users
+- **Admin Portal**: Embedding and customization snippets
+- **Webhook Handling**: Event processing and signature validation
+- **Error Handling**: Robust error management and recovery patterns
+- **Session Management**: Secure token handling across frameworks
+
+## Additional Resources
+
+  - 📚 [Scalekit Documentation](https://docs.scalekit.com)
+  - 🔧 [API Reference](https://docs.scalekit.com/apis/)
+  - 🚀 [Full Stack Auth Quickstart](https://docs.scalekit.com/fsa/quickstart/)
+  - 💬 [Community Examples](https://github.com/orgs/scalekit-developers/repositories)
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://scalekit.com">Scalekit</a>
+</p>
